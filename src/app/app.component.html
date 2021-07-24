@@ -1,27 +1,44 @@
-<div class="container-fluid col-md-6">
+<div class="container col-md-6">
 
-  <!--Template Driven Form or Model Driven Form?-->
-  <form [formGroup]="screeningForm" (ngSubmit)="onSubmit()">
-    <div>
-
-
-      <div class="form-group col-md-6">
-        <div class="row">
-          <label id="activeStatus" class="md-check lead">
-          <input type="radio" formControlName="status" value="Active" name="status" [(ngModel)]="memberDetails.status" [checked]="memberDetails.status == 'Active' ? true : false"/> Active
-        </label>
+<!--Template Driven Form or Model Driven Form?-->
+<form [formGroup]="screeningForm" (ngSubmit)="onSubmit()">
+  <div>
+    <div class="form-group card col-md-6" *ngFor='let question of firstScreeningQestions'>
+      <div class="row">
+        <div>{{question.question}}</div>
+        <div>
           <label class="md-check lead">
-          <input type="radio" formControlName="status" value="Inactive" name="status" [(ngModel)]="memberDetails.status"  [checked]="memberDetails.status == 'Inactive' ? true : false"/> Inactive
-        </label>
+          <input type="radio" formControlName="{{question.group}}" value="yes" name="{{question.group}}" />
+          Yes
+          </label>
+        </div>
+        <div>
+          <label class="md-check lead">
+          <input type="radio" formControlName="{{question.group}}" value="no" name="{{question.group}}" />
+          No
+          </label>
         </div>
       </div>
     </div>
-    <!--Disable if form is invalid-->
-    <button (click)="goToMemberCompnt()" class="btn btn-secondary pull-left">
-    Cancel
+
+    <div class="form-group card col-md-6" *ngFor='let question of secondQuestionnaire'>
+      <div class="row">
+        <div>{{question.question}}</div>
+        <div *ngFor='let answer of question.answers'>
+          <label class="md-check lead">
+          <input type="radio" formControlName="{{question.group}}" value="{{answer.value}}" name="{{question.group}}" />
+          {{answer.answer}}
+          </label>
+        </div>
+      </div>
+    </div>
+
+
+
+  </div>
+
+  <button [disabled]='!screeningForm.valid' type="submit" class="btn btn-primary pull-right">
+    Submit
   </button>
-    <button [disabled]='!memberForm.valid' type="submit" class="btn btn-primary pull-right">
-    {{ templateProps.button }}
-  </button>
-  </form>
+</form>
 </div>
