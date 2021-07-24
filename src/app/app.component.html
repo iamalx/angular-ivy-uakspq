@@ -1,0 +1,27 @@
+<div class="container-fluid col-md-6">
+
+  <!--Template Driven Form or Model Driven Form?-->
+  <form [formGroup]="screeningForm" (ngSubmit)="onSubmit()">
+    <div>
+
+
+      <div class="form-group col-md-6">
+        <div class="row">
+          <label id="activeStatus" class="md-check lead">
+          <input type="radio" formControlName="status" value="Active" name="status" [(ngModel)]="memberDetails.status" [checked]="memberDetails.status == 'Active' ? true : false"/> Active
+        </label>
+          <label class="md-check lead">
+          <input type="radio" formControlName="status" value="Inactive" name="status" [(ngModel)]="memberDetails.status"  [checked]="memberDetails.status == 'Inactive' ? true : false"/> Inactive
+        </label>
+        </div>
+      </div>
+    </div>
+    <!--Disable if form is invalid-->
+    <button (click)="goToMemberCompnt()" class="btn btn-secondary pull-left">
+    Cancel
+  </button>
+    <button [disabled]='!memberForm.valid' type="submit" class="btn btn-primary pull-right">
+    {{ templateProps.button }}
+  </button>
+  </form>
+</div>
