@@ -446,6 +446,7 @@ export class AppComponent {
   pass = true;
 
   onSubmit() {
+    this.screeningForm.reset();
     this.pass = true;
     this.submitted = true;
     this.values = this.screeningForm.value;
@@ -546,6 +547,7 @@ export class AppComponent {
       return;
     }
     console.log(this.pass);
+
     return;
   }
 }
