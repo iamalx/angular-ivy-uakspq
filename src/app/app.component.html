@@ -102,7 +102,10 @@
   <div *ngIf='pass && submitted'>
     You meet the critiria for this study. Email this code "studyZONE6938" to chad@vardas.solutions
   </div>
-  <div>
+  <div *ngIf='submitted'>
+    1st: {{firstValuesSummary.total}}
+    2nd: {{secondValuesSummary.total}}
+    3rd: {{thirdValuesSummary.total}}
 
   </div>
 </div>

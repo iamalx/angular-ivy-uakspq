@@ -439,13 +439,14 @@ export class AppComponent {
     // ...this.thirdQuestions
   ];
 
-  firstValuesSummary = { pass: false };
-  secondValuesSummary = { pass: false };
-  thirdValuesSummary = { pass: false };
+  firstValuesSummary = { pass: null, total: null };
+  secondValuesSummary = { pass: null, total: null };
+  thirdValuesSummary = { pass: null, total: null };
   submitted = false;
-  pass = false;
+  pass = true;
 
   onSubmit() {
+    this.pass = true;
     this.submitted = true;
     this.values = this.screeningForm.value;
     console.log(this.values);
@@ -462,11 +463,11 @@ export class AppComponent {
       (accum, elem) => accum + Number(elem),
       0
     );
+    this.firstValuesSummary['total'] = firstValuesSum;
+    this.firstValuesSummary['items'] = firstValues.length;
     if (firstValuesSum > 0) {
-      this.firstValuesSummary['items'] = firstValues.length;
-      this.firstValuesSummary['total'] = firstValuesSum;
       this.firstValuesSummary['pass'] = false;
-      this.pass = true;
+      this.pass = false;
       return;
     }
     console.log(firstValuesSum);
@@ -499,9 +500,9 @@ export class AppComponent {
       0
     );
     console.log(secondValuesSum);
+    this.secondValuesSummary['items'] = secondValues.length;
+    this.secondValuesSummary['total'] = secondValuesSum;
     if (secondValuesSum < 11) {
-      this.secondValuesSummary['items'] = secondValues.length;
-      this.secondValuesSummary['total'] = secondValuesSum;
       this.secondValuesSummary['pass'] = false;
       this.pass = false;
       return;
@@ -536,17 +537,16 @@ export class AppComponent {
       0
     );
     console.log(Math.floor(thirdValuesSum));
+    this.thirdValuesSummary['items'] = firstValues.length;
+    this.thirdValuesSummary['total'] = Math.floor(thirdValuesSum);
 
-    if (Math.floor(thirdValuesSum) >= 11) {
-      this.thirdValuesSummary['items'] = firstValues.length;
-      this.thirdValuesSummary['total'] = Math.floor(thirdValuesSum);
+    if (Math.floor(thirdValuesSum) < 11) {
       this.thirdValuesSummary['pass'] = false;
-      this.pass = flseZ;
+      this.pass = false;
       return;
     }
     console.log(this.pass);
-    return 
-    
+    return;
   }
 }
 
