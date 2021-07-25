@@ -309,7 +309,7 @@ export class AppComponent {
         { answer: 'I sleep somewhat less than usual', value: 1.01 },
         { answer: 'I sleep a lot more than usual', value: 2.01 },
         { answer: 'I sleep a lot less than usual', value: 2 },
-        { answer: 'I sleep most of the day', value:  },
+        { answer: 'I sleep most of the day', value: 3.01 },
         {
           answer: "I wake up 1-2 hours early and can't get back to sleep",
           value: 3
@@ -442,8 +442,11 @@ export class AppComponent {
   firstValuesSummary = { pass: false };
   secondValuesSummary = { pass: false };
   thirdValuesSummary = { pass: false };
+  submitted = false;
+  pass = false;
 
   onSubmit() {
+    this.submitted = true;
     this.values = this.screeningForm.value;
     console.log(this.values);
     const firstValues = [
@@ -463,7 +466,8 @@ export class AppComponent {
       this.firstValuesSummary['items'] = firstValues.length;
       this.firstValuesSummary['total'] = firstValuesSum;
       this.firstValuesSummary['pass'] = false;
-      // return;
+      this.pass = true;
+      return;
     }
     console.log(firstValuesSum);
     const secondValues = [
@@ -495,11 +499,12 @@ export class AppComponent {
       0
     );
     console.log(secondValuesSum);
-    if (secondValuesSum < 10) {
+    if (secondValuesSum < 11) {
       this.secondValuesSummary['items'] = secondValues.length;
       this.secondValuesSummary['total'] = secondValuesSum;
       this.secondValuesSummary['pass'] = false;
-      // return;
+      this.pass = false;
+      return;
     }
 
     const thirdValues = [
@@ -532,12 +537,16 @@ export class AppComponent {
     );
     console.log(Math.floor(thirdValuesSum));
 
-    if (Math.floor(thirdValuesSum) < 10) {
+    if (Math.floor(thirdValuesSum) >= 11) {
       this.thirdValuesSummary['items'] = firstValues.length;
       this.thirdValuesSummary['total'] = Math.floor(thirdValuesSum);
       this.thirdValuesSummary['pass'] = false;
-      // return;
+      this.pass = flseZ;
+      return;
     }
+    console.log(this.pass);
+    return 
+    
   }
 }
 

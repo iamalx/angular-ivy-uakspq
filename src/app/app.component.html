@@ -92,14 +92,17 @@
     </div>
 
     <button [disabled]='screeningForm.valid' type="submit" class="btn btn-primary pull-right">
-  Submit
-</button>
+      Submit
+    </button>
   </form>
 
-  <div *ngIf='firstValuesSummary.pass'>
+  <div *ngIf='!pass && submitted'>
     Sorry, you are not qualified for this study.
-    <div>
-      <div *ngIf='!firstValuesSummary.pass'>
-        You meet the critiria for this study. Email this code "studyZONE6938" to chad@vardas.solutions
-      </div>
-    </div>
+  </div>
+  <div *ngIf='pass && submitted'>
+    You meet the critiria for this study. Email this code "studyZONE6938" to chad@vardas.solutions
+  </div>
+  <div>
+
+  </div>
+</div>
