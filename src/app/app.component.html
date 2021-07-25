@@ -95,4 +95,11 @@
   Submit
 </button>
   </form>
-</div>
+
+  <div *ngIf='firstValuesSummary.pass'>
+    Sorry, you are not qualified for this study.
+    <div>
+      <div *ngIf='!firstValuesSummary.pass'>
+        You meet the critiria for this study. Email this code "studyZONE6938" to chad@vardas.solutions
+      </div>
+    </div>

@@ -22,11 +22,11 @@ export class AppComponent {
       psycho: new FormControl(null, Validators.required),
       drugs: new FormControl(null, Validators.required),
 
-      numbness: new FormControl('', Validators.required),
-      hot: new FormControl('', Validators.required),
-      relax: new FormControl('', Validators.required),
-      fear: new FormControl('', Validators.required),
-      lightheaded: new FormControl('', Validators.required),
+      numbness: new FormControl(null, Validators.required),
+      hot: new FormControl(null, Validators.required),
+      relax: new FormControl(null, Validators.required),
+      fear: new FormControl(null, Validators.required),
+      lightheaded: new FormControl(null, Validators.required),
       hrRacing: new FormControl('', Validators.required),
       unsteady: new FormControl('', Validators.required),
       choking: new FormControl('', Validators.required),
@@ -306,10 +306,10 @@ export class AppComponent {
           value: 0
         },
         { answer: 'I sleep somewhat more than usual', value: 1 },
-        { answer: 'I sleep somewhat less than usual', value: 1 },
-        { answer: 'I sleep a lot more than usual', value: 2 },
+        { answer: 'I sleep somewhat less than usual', value: 1.01 },
+        { answer: 'I sleep a lot more than usual', value: 2.01 },
         { answer: 'I sleep a lot less than usual', value: 2 },
-        { answer: 'I sleep most of the day', value: 2 },
+        { answer: 'I sleep most of the day', value:  },
         {
           answer: "I wake up 1-2 hours early and can't get back to sleep",
           value: 3
@@ -439,9 +439,9 @@ export class AppComponent {
     // ...this.thirdQuestions
   ];
 
-  firstValuesSummary = {};
-  secondValuesSummary = {};
-  thirdValuesSummary = {};
+  firstValuesSummary = { pass: false };
+  secondValuesSummary = { pass: false };
+  thirdValuesSummary = { pass: false };
 
   onSubmit() {
     this.values = this.screeningForm.value;
@@ -496,8 +496,8 @@ export class AppComponent {
     );
     console.log(secondValuesSum);
     if (secondValuesSum < 10) {
-      this.secondValuesSummary['items'] = firstValues.length;
-      this.secondValuesSummary['total'] = firstValuesSum;
+      this.secondValuesSummary['items'] = secondValues.length;
+      this.secondValuesSummary['total'] = secondValuesSum;
       this.secondValuesSummary['pass'] = false;
       // return;
     }
@@ -525,14 +525,19 @@ export class AppComponent {
       this.values.appetite
     ];
 
-    
-
     console.log(thirdValues);
     const thirdValuesSum = thirdValues.reduce(
       (accum, elem) => accum + Number(elem),
       0
     );
     console.log(Math.floor(thirdValuesSum));
+
+    if (Math.floor(thirdValuesSum) < 10) {
+      this.thirdValuesSummary['items'] = firstValues.length;
+      this.thirdValuesSummary['total'] = Math.floor(thirdValuesSum);
+      this.thirdValuesSummary['pass'] = false;
+      // return;
+    }
   }
 }
 
