@@ -462,7 +462,7 @@ export class AppComponent {
     if (firstValuesSum > 0) {
       this.firstValuesSummary['items'] = firstValues.length;
       this.firstValuesSummary['total'] = firstValuesSum;
-      firstValuesSummary['pass;] =
+      this.firstValuesSummary['pass'] = false;
       // return;
     }
     console.log(firstValuesSum);
@@ -495,6 +495,12 @@ export class AppComponent {
       0
     );
     console.log(secondValuesSum);
+    if (secondValuesSum < 10) {
+      this.secondValuesSummary['items'] = firstValues.length;
+      this.secondValuesSummary['total'] = firstValuesSum;
+      this.secondValuesSummary['pass'] = false;
+      // return;
+    }
 
     const thirdValues = [
       this.values.sadness,
@@ -518,6 +524,8 @@ export class AppComponent {
       this.values.sleeping,
       this.values.appetite
     ];
+
+    
 
     console.log(thirdValues);
     const thirdValuesSum = thirdValues.reduce(
