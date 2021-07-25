@@ -91,7 +91,7 @@
 
     </div>
 
-    <button [disabled]='screeningForm.valid' type="submit" class="btn btn-primary pull-right">
+    <button [disabled]='!screeningForm.valid' type="submit" class="btn btn-primary pull-right">
       Submit
     </button>
   </form>

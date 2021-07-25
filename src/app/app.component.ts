@@ -446,10 +446,10 @@ export class AppComponent {
   pass = true;
 
   onSubmit() {
-    this.screeningForm.reset();
     this.pass = true;
     this.submitted = true;
     this.values = this.screeningForm.value;
+    this.screeningForm.reset();
     console.log(this.values);
     const firstValues = [
       this.values.age,
