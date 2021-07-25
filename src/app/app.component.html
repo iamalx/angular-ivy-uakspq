@@ -57,9 +57,7 @@
         <h2>Depression Inventory</h2>
         <p>
           Please read each group of statements carefully. And then pick out the statement in each group that best
-          describes the way you have been feeling during the past two weeks, including today. Circle the number beside
-          the statement you have picked. If several statements in the group seem to apply equally well, circle the
-          highest number for that group. Be sure than you do not choose more than one statement for any group, including
+          Be sure than you do not choose more than one statement for any group, including
           changes in sleeping pattern or changes in appetite.
         </p>
       </div>
@@ -96,11 +94,11 @@
     </button>
   </form>
 
-  <div *ngIf='!pass && submitted'>
+  <div *ngIf='!pass && submitted' class='highlight'>
     Sorry, you are not qualified for this study.
   </div>
-  <div *ngIf='pass && submitted'>
-    You meet the critiria for this study. Email this code "studyZONE6938" to chad@vardas.solutions
+  <div *ngIf='pass && submitted' class='highlight'>
+    You meet the criteria for this study. Email this code "studyZONE6938" to chad@vardas.solutions
   </div>
   <!-- <div *ngIf='submitted'>
     1st: {{firstValuesSummary.total}}

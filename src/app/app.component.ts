@@ -77,7 +77,7 @@ export class AppComponent {
   values;
 
   firstScreeningQestions = [
-    { question: 'Are you bellow 18 or above 65 years old?', group: 'age' },
+    { question: 'Are you below 18 or above 65 years old?', group: 'age' },
     {
       question:
         'Do you have a history of mental illness besides anxiety or depression?',
