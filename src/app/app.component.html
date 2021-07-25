@@ -20,13 +20,13 @@
           <div>{{question.question}}</div>
           <div>
             <label class="md-check lead">
-        <input type="radio" formControlName="{{question.group}}" value="1" name="{{question.group}}" />
+        <input type="radio" formControlName="{{question.group}}" value=1 name="{{question.group}}" />
         Yes
         </label>
           </div>
           <div>
             <label class="md-check lead">
-        <input type="radio" formControlName="{{question.group}}" value="0" name="{{question.group}}" />
+        <input type="radio" formControlName="{{question.group}}" value=0 name="{{question.group}}" />
         No
         </label>
           </div>
@@ -81,7 +81,7 @@
           <div>{{question.question}}</div>
           <div *ngFor='let answer of question.answers; let i = index'>
             <label class="md-check lead">
-        <input type="radio" formControlName="{{question.group}}" value="j" name="{{question.group}}" />
+        <input type="radio" formControlName="{{question.group}}" value="{{answer.value}}" name="{{question.group}}" />
         {{answer.answer}}
         </label>
           </div>

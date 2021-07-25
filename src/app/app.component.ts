@@ -14,13 +14,13 @@ import {
 export class AppComponent {
   constructor(public fb: FormBuilder) {
     this.screeningForm = this.fb.group({
-      age: new FormControl('', Validators.required),
-      anxiety: new FormControl('', Validators.required),
-      english: new FormControl('', Validators.required),
-      heart: new FormControl('', Validators.required),
-      meds: new FormControl('', Validators.required),
-      psycho: new FormControl('', Validators.required),
-      drugs: new FormControl('', Validators.required),
+      age: new FormControl(null, Validators.required),
+      anxiety: new FormControl(null, Validators.required),
+      english: new FormControl(null, Validators.required),
+      heart: new FormControl(null, Validators.required),
+      meds: new FormControl(null, Validators.required),
+      psycho: new FormControl(null, Validators.required),
+      drugs: new FormControl(null, Validators.required),
 
       numbness: new FormControl('', Validators.required),
       hot: new FormControl('', Validators.required),
@@ -324,11 +324,11 @@ export class AppComponent {
           answer: 'I have not experienced any change in my appetite',
           value: 0
         },
-        { answer: 'My appetite is somewhat less than usual', value: 0 },
-        { answer: 'My appetite is somewhat greater than usual', value: 1 },
-        { answer: 'My appetite is much less than before', value: 1 },
-        { answer: 'My appetite is much greater than usual', value: 2 },
-        { answer: 'I have no appetite at all', value: 3 },
+        { answer: 'My appetite is somewhat less than usual', value: 1 },
+        { answer: 'My appetite is somewhat greater than usual', value: 1.01 },
+        { answer: 'My appetite is much less than before', value: 2 },
+        { answer: 'My appetite is much greater than usual', value: 2.01 },
+        { answer: 'I have no appetite at all', value: 3.01 },
         { answer: 'I crave food all the time', value: 3 }
       ],
       group: 'appetite'
@@ -439,6 +439,10 @@ export class AppComponent {
     // ...this.thirdQuestions
   ];
 
+  firstValuesSummary = {};
+  secondValuesSummary = {};
+  thirdValuesSummary = {};
+
   onSubmit() {
     this.values = this.screeningForm.value;
     console.log(this.values);
@@ -455,24 +459,72 @@ export class AppComponent {
       (accum, elem) => accum + Number(elem),
       0
     );
+    if (firstValuesSum > 0) {
+      this.firstValuesSummary['items'] = firstValues.length;
+      this.firstValuesSummary['total'] = firstValuesSum;
+      firstValuesSummary['pass;] =
+      // return;
+    }
     console.log(firstValuesSum);
-
-    const SecondValues = [
-      this.values.age,
-      this.values.anxiety,
-      this.values.english,
-      this.values.heart,
-      this.values.meds,
-      this.values.psycho,
-      this.values.drugs,
-       this.values.age,
-      this.values.anxiety,
-      this.values.english,
-      this.values.heart,
-      this.values.meds,
-      this.values.psycho,
+    const secondValues = [
+      this.values.numbness,
+      this.values.hot,
+      this.values.relax,
+      this.values.fear,
+      this.values.lightheaded,
+      this.values.hrRacing,
+      this.values.unsteady,
+      this.values.choking,
+      this.values.afraid,
+      this.values.nervous,
+      this.values.hands,
+      this.values.shaky,
+      this.values.dying,
+      this.values.control,
+      this.values.breathing,
+      this.values.scared,
+      this.values.indigestion,
+      this.values.flushed,
+      this.values.faint,
+      this.values.sweats
     ];
 
+    console.log(secondValues);
+    const secondValuesSum = secondValues.reduce(
+      (accum, elem) => accum + Number(elem),
+      0
+    );
+    console.log(secondValuesSum);
+
+    const thirdValues = [
+      this.values.sadness,
+      this.values.Pessimism,
+      this.values.failure,
+      this.values.pleasure,
+      this.values.guilty,
+      this.values.dislike,
+      this.values.critic,
+      this.values.suicidal,
+      this.values.crying,
+      this.values.agitation,
+      this.values.interest,
+      this.values.indecisive,
+      this.values.worth,
+      this.values.energy,
+      this.values.irritability,
+      this.values.concentrate,
+      this.values.tire,
+      this.values.sex,
+      this.values.sleeping,
+      this.values.appetite
+    ];
+
+    console.log(thirdValues);
+    const thirdValuesSum = thirdValues.reduce(
+      (accum, elem) => accum + Number(elem),
+      0
+    );
+    console.log(Math.floor(thirdValuesSum));
   }
 }
 
