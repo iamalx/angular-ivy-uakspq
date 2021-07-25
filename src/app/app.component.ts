@@ -442,11 +442,37 @@ export class AppComponent {
   onSubmit() {
     this.values = this.screeningForm.value;
     console.log(this.values);
-    const firstValues = [this.values.age, this.values.anxiety, this.values.english, this.values .heart, this.values.meds, this.values.psycho, this.values.drugs ];
-    const firstValuesSum = firstValues.reduce((accum, elem) => accum + elem, 0);
+    const firstValues = [
+      this.values.age,
+      this.values.anxiety,
+      this.values.english,
+      this.values.heart,
+      this.values.meds,
+      this.values.psycho,
+      this.values.drugs
+    ];
+    const firstValuesSum = firstValues.reduce(
+      (accum, elem) => accum + Number(elem),
+      0
+    );
+    console.log(firstValuesSum);
 
-   
-    
+    const SecondValues = [
+      this.values.age,
+      this.values.anxiety,
+      this.values.english,
+      this.values.heart,
+      this.values.meds,
+      this.values.psycho,
+      this.values.drugs,
+       this.values.age,
+      this.values.anxiety,
+      this.values.english,
+      this.values.heart,
+      this.values.meds,
+      this.values.psycho,
+    ];
+
   }
 }
 
