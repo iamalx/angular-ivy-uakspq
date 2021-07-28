@@ -8,7 +8,7 @@
         <h2>Screening</h2>
         <P><u>
             Questionnaire is fully confidential, anonymous, and we can't see individual responses.
-        </u></P>
+          </u></P>
         <P>Below is a list of screening questions. Please be honest.</P>
         <p>
           First, are general yes or no screening questions.
@@ -91,17 +91,19 @@
 
     </div>
 
+    <div *ngIf='!pass && submitted' class='highlight'>
+      Sorry, you are not qualified for this study.
+    </div>
+    <div *ngIf='pass && submitted' class='highlight'>
+      You meet the criteria for this study. Email this code "studyZONE6938" to chad@vardas.solutions
+    </div>
+
     <button [disabled]='!screeningForm.valid' type="submit" class="btn btn-primary pull-right">
       Submit
     </button>
   </form>
 
-  <div *ngIf='!pass && submitted' class='highlight'>
-    Sorry, you are not qualified for this study.
-  </div>
-  <div *ngIf='pass && submitted' class='highlight'>
-    You meet the criteria for this study. Email this code "studyZONE6938" to chad@vardas.solutions
-  </div>
+
   <!-- <div *ngIf='submitted'>
     1st: {{firstValuesSummary.total}}
     2nd: {{secondValuesSummary.total}}
